@@ -1,17 +1,30 @@
-FROM  centos:latest
-MAINTAINER devops3941@gmail.com
-RUN yum install -y httpd \ WGET
- zip\
- unzip
+#FROM  centos:latest
+#MAINTAINER devops3941@gmail.com
+#RUN yum install -y httpd \ WGET
+ #zip\
+ #unzip
+#ADD https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip /var/www/html/
+#WORKDIR /var/www/html/
+#RUN unzip photogenic.zip
+#RUN cp -rvf photogenic/* .
+#RUN rm -rf photogenic photogenic.zip
+#CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+#EXPOSE 80 
+
+
+FROM ubuntu:latest
+MAINTAINER devops@3941@gmail.com
+RUN apt update 
+RUN apt install –y apache2 
+RUN apt install –y apache2-utils 
+RUN apt clean 
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip /var/www/html/
 WORKDIR /var/www/html/
 RUN unzip photogenic.zip
 RUN cp -rvf photogenic/* .
 RUN rm -rf photogenic photogenic.zip
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
-EXPOSE 80 
-
-
+EXPOSE 80
 # FROM  centos:latest
 # MAINTAINER vikashashoke@gmail.com
 # RUN yum install -y httpd \
