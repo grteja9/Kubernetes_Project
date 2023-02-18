@@ -18,7 +18,7 @@
 # EXPOSE 80
 # CMD [“nginx”,”-g”,”daemon off;”]
 
-FROM ubuntu:12.04
+FROM ubuntu:latest
 RUN apt-get update && \
       apt-get -y install sudo
 
