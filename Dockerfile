@@ -10,14 +10,21 @@
 # CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
 # EXPOSE 80 
 
-FROM ubuntu
-RUN apt-get update && \
-apt-get install nginx -y sudo
-USER devops
-COPY index.html /var/www/html/
-EXPOSE 80
-CMD [“nginx”,”-g”,”daemon off;”]
+# FROM ubuntu
+# RUN apt-get update && \
+# apt-get install nginx -y sudo
+# USER devops
+# COPY index.html /var/www/html/
+# EXPOSE 80
+# CMD [“nginx”,”-g”,”daemon off;”]
 
+FROM ubuntu:12.04
+RUN apt-get update && \
+      apt-get -y install sudo
+
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+USER docker
+CMD /bin/bash
 
 
 
